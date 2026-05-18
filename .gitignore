@@ -1,1 +1,14 @@
+# Virtual Environments
+my_project_env/
+venv/
+
+# Environment Variables / Secrets
 .env
+
+# Python Cache files (prevents annoying __pycache__ folders from uploading)
+__pycache__/
+*.pyc
+
+# VS Code settings (optional, but good practice)
+.vscode/
+.cph/
