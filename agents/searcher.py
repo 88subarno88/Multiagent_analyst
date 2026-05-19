@@ -31,7 +31,7 @@ async def run_search_agent(queries: list[str]) -> str:
         try:
             response = await client.aio.models.generate_content(
                 model="gemini-2.5-flash" ,        
-                contents= [read_txt],   
+                contents=[f"SYSTEM INSTRUCTIONS:\n{SYSTEM_PROMPT}\n\n---\n\n{read_txt}"] ,
                 config=types.GenerateContentConfig(
                     system_instruction=SYSTEM_PROMPT,
                     temperature=0.1,       
