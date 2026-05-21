@@ -12,7 +12,7 @@ client = genai.Client(
 )
 
 
-SYSTEM_PROMPT = open("prompts/synthesiser.txt").read()
+SYSTEM_PROMPT = open("prompts/synthesizer.txt").read()
 
 
 def parse_agent_output(raw: str, agent_name: str) -> str:
@@ -47,8 +47,8 @@ async def run_synthesiser(
  
      try:
        
-        response = client.models.generate_content(
-            model="gemini-2.5-pro",
+        response = await client.aio.models.generate_content(
+            model="gemini-2.5-flash",
             contents=user_message,
             config=types.GenerateContentConfig(
                 system_instruction=SYSTEM_PROMPT,

@@ -14,44 +14,45 @@ client = genai.Client(
 
 
 SYSTEM_PROMPT=open("prompts/researcher.txt").read()
-
-
 async def run_search_agent(queries: list[str]) -> str:
-    results = await asyncio.gather(*[tavily_search(q) for q in queries])
-    all_results = [item for batch in results for item in batch]
-    if len(all_results)==0:
-            fallback_data ={
-            "results": [],
-            "message": "No results found"
-            }
-            return json.dumps(fallback_data)
-    read_txt=format_results(all_results)
-    print("calling gemini api..")
-    for attempt in range(3):
-        try:
-            response = await client.aio.models.generate_content(
-                model="gemini-2.5-flash" ,        
-                contents=[f"SYSTEM INSTRUCTIONS:\n{SYSTEM_PROMPT}\n\n---\n\n{read_txt}"] ,
-                config=types.GenerateContentConfig(
-                    system_instruction=SYSTEM_PROMPT,
-                    temperature=0.1,       
-                    max_output_tokens=2000
-                )
-            )
-            return response.text.replace("```json\n", "").replace("```json", "").replace("```", "").strip()
-        except Exception as e:
-            error_msg = str(e)
-            if "503" in error_msg and attempt < 2:
-                print(f"Google servers busy. Retrying in 5 seconds... (Attempt {attempt + 1}/3)")
-                await asyncio.sleep(5)
-                continue 
-                
+    allthing= []
+    
+    # process one query at a time so Gemini never misses a fact!
+    for q in queries:
+        print(f"\n Searching and analyzing: '{q}'...")
+        results=await tavily_search(q)
+        if not results:
+            continue
             
-            print(f"GEMINI API ERROR: {e}")
-            fallback_data = {
-                "error": True,
-                "message": f"The AI model failed to respond: {error_msg}",
-                "results": [] 
-            }
-            return json.dumps(fallback_data)
-
+        read_txt =format_results(results)
+        for attempt in range(3):
+            try:
+                response = await client.aio.models.generate_content(
+                    model="gemini-2.5-flash",       
+                    contents=[read_txt],   
+                    config=types.GenerateContentConfig(
+                        system_instruction=SYSTEM_PROMPT,
+                        temperature=0.1,       
+                        max_output_tokens=2000,
+                        response_mime_type="application/json" 
+                    )
+                )
+                data =json.loads(response.text)
+                
+                if "findings" in data:
+                     allthing.extend(data["findings"])
+                    
+                break 
+            except Exception as e:
+                if "503" in str(e) and attempt < 2:
+                    print(f"Servers busy. Retrying in 5 seconds...")
+                    await asyncio.sleep(5)
+                    continue
+                
+                print(f"GEMINI API ERROR on '{q}':{e}")
+                break
+    if not  allthing:
+        return json.dumps({"error": True, 
+                           "message": "No results found.",
+                           "findings": []})
+    return json.dumps({"findings": allthing})

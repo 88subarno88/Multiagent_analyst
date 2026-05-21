@@ -3,10 +3,10 @@ import json
 import os
 from google import genai
 from google.genai import types
-from agents.search_agent import run_search_agent
-from agents.news_agent import run_news_agent
-from agents.financial_agent import run_financial_agent
-from agents.synthesiser import run_synthesiser
+from agents.searcher import run_search_agent
+from agents.newsgiver import run_news_agent
+from agents.Financial import run_financial_agent
+from agents.synthesizer import run_synthesiser
 
 
 client = genai.Client(
@@ -96,7 +96,7 @@ async def run_orchestrator(company: str) -> str:
     messages = [
         types.Content(
             role="user", 
-            parts=[types.Part.from_text(f"Research this company: {company}")]
+            parts=[types.Part(text=f"Research this company: {company}")]
         )
     ]
     findings = {
@@ -129,7 +129,13 @@ async def run_orchestrator(company: str) -> str:
         tool_names = [tc.function_call.name for tc in tool_calls]
         print(f" Boss Agent is dispatching workers: {', '.join(tool_names)}")
         
-        results = await asyncio.gather(*[dispatch(tc, company) for tc in tool_calls])
+        results = []
+        for tc in tool_calls:
+            print(f" Pausing for 5 seconds to prevent API overload before running {tc.function_call.name}...")
+            await asyncio.sleep(5)
+            
+            res = await dispatch(tc, company)
+            results.append(res)
         for tc, result in zip(tool_calls, results):
             name = tc.function_call.name
             if name in findings:

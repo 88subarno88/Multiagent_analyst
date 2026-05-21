@@ -76,7 +76,8 @@ async def run_news_agent(queries: list[str]) -> str:
                 contents= [combined_text],   
                 config=types.GenerateContentConfig(
                     system_instruction=NEWS_EXTRACTION_PROMPT,
-                    temperature=0.1,       
+                    temperature=0.1,   
+                    response_mime_type="application/json"    
                 )
             )
             return response.text
