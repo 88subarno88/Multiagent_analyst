@@ -1,6 +1,7 @@
 import asyncio
 import json
 import os
+import streamlit as st
 from google import genai
 from google.genai import types
 from agents.searcher import run_search_agent
@@ -10,7 +11,7 @@ from agents.synthesizer import run_synthesiser
 
 
 client = genai.Client(
-      api_key=os.environ["GEMINI_API_KEY"],
+      api_key=st.environ["GEMINI_API_KEY"],
       http_options=types.HttpOptions(api_version="v1beta"),
 )
 

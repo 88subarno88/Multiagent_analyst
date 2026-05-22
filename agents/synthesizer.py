@@ -1,5 +1,6 @@
 import json
 import os
+import streamlit as st
 import asyncio
 from dotenv import load_dotenv
 from google import genai
@@ -7,7 +8,7 @@ from google.genai import types
 
 
 client = genai.Client(
-      api_key=os.environ["GEMINI_API_KEY"],
+      api_key=st.environ["GEMINI_API_KEY"],
       http_options=types.HttpOptions(api_version="v1beta"),
 )
 
