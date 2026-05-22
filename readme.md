@@ -1,9 +1,9 @@
-# 🤖 Multi-Agent Research Analyst
+# Multi-Agent Research Analyst
 
 Autonomous competitive intelligence briefs — powered by Gemini AI + Tavily Search.
 Type a company name, watch 4 agents work in parallel, download a PDF report.
 
-🚀 **Live demo → [multiagentanalyst.streamlit.app](https://multiagentanalyst.streamlit.app/)**
+**Live demo → [multiagentanalyst.streamlit.app](https://multiagentanalyst.streamlit.app/)**
 
 ---
 
@@ -13,9 +13,9 @@ A boss orchestrator agent plans the research, then fires 3 specialist agents **a
 
 | Agent | What it does |
 |---|---|
-| 🌐 Web Agent | Market position, products, competitors |
-| 📰 News Agent | Last 30 days — funding, launches, leadership changes |
-| 📊 Financial Agent | Revenue, growth, profitability, key risks |
+|  Web Agent | Market position, products, competitors |
+|  News Agent | Last 30 days — funding, launches, leadership changes |
+| Financial Agent | Revenue, growth, profitability, key risks |
 
 All findings get passed to a **synthesiser** that writes the final structured brief and exports it as a PDF.
 
