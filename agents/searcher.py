@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 client = genai.Client(
-      api_key=st.environ["GEMINI_API_KEY"],
+      api_key=st.secrets["GEMINI_API_KEY"],
       http_options=types.HttpOptions(api_version="v1beta"),
   )
 

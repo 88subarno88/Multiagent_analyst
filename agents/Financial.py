@@ -8,7 +8,7 @@ from tools.tavily_client import tavily_search
 from tools.web_scraper import scrape_article
 
 client = genai.Client(
-      api_key=st.environ["GEMINI_API_KEY"],
+      api_key=st.secrets["GEMINI_API_KEY"],
       http_options=types.HttpOptions(api_version="v1beta"),
 )
 

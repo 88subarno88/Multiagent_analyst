@@ -11,7 +11,7 @@ from agents.synthesizer import run_synthesiser
 
 
 client = genai.Client(
-      api_key=st.environ["GEMINI_API_KEY"],
+      api_key=st.secrets["GEMINI_API_KEY"],
       http_options=types.HttpOptions(api_version="v1beta"),
 )
 
