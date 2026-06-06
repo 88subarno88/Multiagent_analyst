@@ -4,6 +4,7 @@ Autonomous competitive intelligence briefs — powered by Gemini AI + Tavily Sea
 Type a company name, watch 4 agents work in parallel, download a PDF report.
 
 **Live demo -> [multiagentanalyst.streamlit.app](https://multiagentanalyst.streamlit.app/)**
+
 **Live demo video ->https://drive.google.com/file/d/10Y40BBCZR2Hdwt0wINIaHbaHsuJBmXyQ/view?usp=sharing**
 
 ---
