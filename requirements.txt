@@ -1,6 +1,0 @@
-streamlit
-google-genai
-python-dotenv
-reportlab
-beautifulsoup4
-tavily-python
