@@ -43,7 +43,7 @@ CREATE INDEX IF NOT EXISTS chunks_embedding_idx
 CREATE INDEX IF NOT EXISTS chunks_tsv_idx
     ON chunks USING GIN (content_tsv);
 
--- Simple key/value cache for repeated sub-questions 
+-- Simple key/value cache for repeated sub-questions (Milestone 4).
 CREATE TABLE IF NOT EXISTS query_cache (
     cache_key  TEXT PRIMARY KEY,
     payload    JSONB NOT NULL,

@@ -1,0 +1,2 @@
+Rewrite the failed research sub-question into a single, sharper web-search query
+using more specific terms, names, or dates. Return ONLY the query string.
