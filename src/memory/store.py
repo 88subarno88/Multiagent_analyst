@@ -47,6 +47,10 @@ class MemoryStore:
 
     @staticmethod
     async def _init_conn(conn):
+        # Ensure the pgvector extension exists BEFORE registering the codec,
+        # otherwise register_vector() fails with "unknown type: public.vector"
+        # on a fresh database (the type doesn't exist until the extension is made).
+        await conn.execute("CREATE EXTENSION IF NOT EXISTS vector;")
         await register_vector(conn)
 
     async def close(self):

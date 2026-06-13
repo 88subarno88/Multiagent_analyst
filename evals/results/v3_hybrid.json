@@ -1,0 +1,966 @@
+{
+  "config": {
+    "strategy": "hybrid",
+    "provider": "gemini"
+  },
+  "aggregate": {
+    "mean_citation_accuracy": 0.56,
+    "mean_faithfulness": 0.0,
+    "mean_answer_relevance": 0.0,
+    "mean_hallucination_rate": 1.0,
+    "mean_latency_sec": 0.45,
+    "total_cost_usd": 0.0
+  },
+  "results": [
+    {
+      "question": "What problem does Retrieval-Augmented Generation solve?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.42,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "Bi-encoder vs cross-encoder in retrieval \u2014 what's the difference?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.43,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "Why is overlap important when chunking documents for RAG?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.45,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What is Reciprocal Rank Fusion (RRF)?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.67,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "How does BM25 differ from dense vector retrieval?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.44,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What is the purpose of the pgvector extension in PostgreSQL?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.47,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What are HNSW and IVFFlat?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.42,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "Describe the ReAct agent framework.",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.49,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What is the primary difference between a Planner agent and a Worker agent in a multi-agent system?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.42,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "How does Corrective RAG (CRAG) improve standard RAG pipelines?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.39,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "In the context of RAG evaluation, what does 'Faithfulness' measure?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.55,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "How is 'Answer Relevance' different from 'Faithfulness'?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.49,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What are common biases of using an 'LLM-as-a-judge' for evaluation?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.46,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "Why use local sentence-transformers instead of API-based embeddings?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.44,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What is the Reflexion pattern in AI agents?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.48,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What specific tool is recommended for web searching in the Deep Research Agent build?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.47,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "How do you calculate hallucination rate in a RAG system?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.48,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What does Langfuse provide for LLM applications?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.47,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What is the exact release date of OpenAI's GPT-6 model?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.42,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What did the creator of Python, Guido van Rossum, eat for dinner on his 30th birthday?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.38,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "How do you configure pgvector to run on a biological neural network?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.45,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "If a sub-question depends on the result of another sub-question, how should the orchestrator handle it?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.4,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What is the tradeoff of using very small chunk sizes for RAG?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.42,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "Why might one choose to use Llama 3.1 8B via Ollama instead of Gemini 2.5 Flash as a worker node?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.69,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What is the purpose of the 'must_cite_sources' array in our dataset?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.46,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "How can you prevent a Corrective RAG loop from running infinitely?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.43,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "Why is asyncio critical for the worker agents in this system?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.74,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What Python library is recommended for parsing HTML after fetching a webpage?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.46,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What happens if the Planner agent fails to identify dependencies between sub-questions?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.43,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What is 'graceful degradation' in the context of API rate limits?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.45,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "Who will win the 2032 Summer Olympics?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.42,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "Why is Streamlit recommended for this project's UI?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.43,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What does 'JSON-mode' force the LLM to do?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.43,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "Why might you over-fetch chunks (e.g., top-20) before applying a reranker?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.43,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What is the primary role of the Synthesizer agent?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.44,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "How do you calculate the total cost of a user query in this architecture?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.41,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What is Context Recall in RAG evaluation?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.45,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What command is recommended to stand up the Postgres and Langfuse services?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.41,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "Why must source metadata be attached to text chunks in the pgvector store?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.41,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What is Pydantic primarily used for in this architecture?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.47,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "How does semantic chunking differ from naive fixed-size chunking?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.37,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "Does this Deep Research Agent architecture use ChromaDB by default?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.42,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What is the capital city of the moon?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.42,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What metric checks if retrieval fetched the right chunks?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.42,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "If a user query asks for 'the current primary LLM', what should the system retrieve?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.45,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What is the trade-off of using large chunk sizes for memory storage?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.42,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "How does the memory layer cut down on redundant web scrapes?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.47,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "Can pgvector be used without a Postgres database?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.37,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What is the benefit of tracking token usage per query?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.46,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    },
+    {
+      "question": "What is the main advantage of treating this project as an experiment with a measured conclusion?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 0.47,
+        "cost_usd": 0.0,
+        "total_tokens": 0
+      },
+      "outputs": {
+        "answer": "",
+        "unsupported_claims": [],
+        "sources_cited": []
+      }
+    }
+  ]
+}
