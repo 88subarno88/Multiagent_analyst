@@ -33,45 +33,36 @@ _RELEVANCE_SYS = (
     '{"score": <float 0..1>, "reasoning": "<one sentence>"}'
 )
 
-def _norm_domain(url: str) -> str:
-    domain=urlparse(url).netloc.lower()
-    return domain.removeprefix("www."); #strip leading "www."
 
+def _norm_domain(url: str) -> str:
+    domain = urlparse(url).netloc.lower()
+    return domain.removeprefix("www.")
 
 
 def citation_accuracy(report_sources: list[str], must_cite: list[str]) -> float:
     if not must_cite:
-      return 1.0
+        return 1.0
     got = set(_norm_domain(url) for url in report_sources)
     want = set(_norm_domain(url) for url in must_cite)
-    intersection=got & want
-    return  len(intersection)/len(want)
-
- 
+    intersection = got & want
+    return len(intersection) / len(want)
 
 
 async def faithfulness(answer: str, context: str, judge: LLMClient) -> tuple[float, list[str]]:
     if not answer or not context:
         return (0.0, [])
     prompt = f"Context: {context}\n\nAnswer: {answer}"
-    
     try:
-        # Await the async network call
-        response_text = await judge.generate_json(
-            prompt=prompt, 
-            system=_FAITHFULNESS_SYS, 
-            temperature=0.0
+        # generate_json already returns a parsed dict.
+        result = await judge.generate_json(
+            prompt=prompt,
+            system=_FAITHFULNESS_SYS,
+            temperature=0.0,
         )
-        # Parse the JSON string
-        result = json.loads(response_text)
-        
-        # Safely extract the values 
         score = float(result.get("score", 0.0))
         unsupported_claims = result.get("unsupported_claims", [])
         return (score, unsupported_claims)
-        
     except Exception as e:
-        # Handle the "on error" fallback
         print(f"Faithfulness parsing error: {e}")
         return (0.0, [])
 
@@ -81,32 +72,20 @@ async def answer_relevance(question: str, answer: str, judge: LLMClient) -> floa
         return 0.0
     prompt = f"Question: {question}\n\nAnswer: {answer}"
     try:
-        # Await the async network call
-        response_text = await judge.generate_json(
-            prompt=prompt, 
-            system=_RELEVANCE_SYS, 
-            temperature=0.0
+        # generate_json already returns a parsed dict.
+        result = await judge.generate_json(
+            prompt=prompt,
+            system=_RELEVANCE_SYS,
+            temperature=0.0,
         )
-        # Parse the JSON string
-        result = json.loads(response_text)
-        
-        #Safely extract the values 
         score = float(result.get("score", 0.0))
-        
         return score
-        
     except Exception as e:
-        # 5. Handle the "on error" fallback
         print(f"answer_relevance error: {e}")
         return 0.0
 
 
 def extract_cited_markers(report_text: str) -> list[int]:
-    
-    #Extracts numerical citation markers like [1], [2] from a text.
-    #Returns a deduplicated and sorted list of the integers.
-    # Find all digits enclosed in square brackets
+    # Extract numerical citation markers like [1], [2]; dedup and sort.
     matches = re.findall(r"\[(\d+)\]", report_text)
-    
-    # Convert matches to integers, deduplicate with set(), and sort
     return sorted(list(set(int(match) for match in matches)))

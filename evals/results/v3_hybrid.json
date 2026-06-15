@@ -8,7 +8,7 @@
     "mean_faithfulness": 0.0,
     "mean_answer_relevance": 0.0,
     "mean_hallucination_rate": 1.0,
-    "mean_latency_sec": 0.45,
+    "mean_latency_sec": 5.67,
     "total_cost_usd": 0.0
   },
   "results": [
@@ -21,7 +21,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.42,
+        "latency_sec": 10.52,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -40,7 +40,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.43,
+        "latency_sec": 48.37,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -59,7 +59,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.45,
+        "latency_sec": 0.84,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -78,7 +78,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.67,
+        "latency_sec": 50.12,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -97,7 +97,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.44,
+        "latency_sec": 88.73,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -116,7 +116,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.47,
+        "latency_sec": 27.65,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -135,7 +135,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.42,
+        "latency_sec": 0.62,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -154,7 +154,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.49,
+        "latency_sec": 25.22,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -173,7 +173,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.42,
+        "latency_sec": 0.67,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -192,7 +192,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.39,
+        "latency_sec": 0.72,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -211,7 +211,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.55,
+        "latency_sec": 0.69,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -230,7 +230,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.49,
+        "latency_sec": 0.75,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -249,7 +249,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.46,
+        "latency_sec": 0.72,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -268,7 +268,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.44,
+        "latency_sec": 0.72,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -287,7 +287,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.48,
+        "latency_sec": 0.64,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -306,7 +306,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.47,
+        "latency_sec": 0.68,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -325,7 +325,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.48,
+        "latency_sec": 0.69,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -344,7 +344,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.47,
+        "latency_sec": 0.85,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -363,7 +363,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.42,
+        "latency_sec": 0.92,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -382,7 +382,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.38,
+        "latency_sec": 0.72,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -401,7 +401,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.45,
+        "latency_sec": 0.76,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -420,7 +420,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.4,
+        "latency_sec": 0.83,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -439,7 +439,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.42,
+        "latency_sec": 0.67,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -458,7 +458,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.69,
+        "latency_sec": 0.67,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -477,7 +477,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.46,
+        "latency_sec": 0.66,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -496,7 +496,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.43,
+        "latency_sec": 0.69,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -515,7 +515,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.74,
+        "latency_sec": 1.2,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -534,7 +534,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.46,
+        "latency_sec": 0.87,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -553,7 +553,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.43,
+        "latency_sec": 0.64,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -572,7 +572,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.45,
+        "latency_sec": 0.64,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -591,7 +591,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.42,
+        "latency_sec": 0.67,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -610,7 +610,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.43,
+        "latency_sec": 0.63,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -629,7 +629,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.43,
+        "latency_sec": 0.7,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -648,7 +648,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.43,
+        "latency_sec": 0.77,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -667,7 +667,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.44,
+        "latency_sec": 0.76,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -686,7 +686,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.41,
+        "latency_sec": 0.72,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -705,7 +705,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.45,
+        "latency_sec": 0.78,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -724,7 +724,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.41,
+        "latency_sec": 0.65,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -743,7 +743,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.41,
+        "latency_sec": 0.72,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -762,7 +762,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.47,
+        "latency_sec": 0.92,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -781,7 +781,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.37,
+        "latency_sec": 0.72,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -800,7 +800,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.42,
+        "latency_sec": 0.72,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -819,7 +819,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.42,
+        "latency_sec": 0.72,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -838,7 +838,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.42,
+        "latency_sec": 0.83,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -857,7 +857,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.45,
+        "latency_sec": 0.66,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -876,7 +876,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.42,
+        "latency_sec": 0.66,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -895,7 +895,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.47,
+        "latency_sec": 0.82,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -914,7 +914,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.37,
+        "latency_sec": 0.63,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -933,7 +933,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.46,
+        "latency_sec": 0.84,
         "cost_usd": 0.0,
         "total_tokens": 0
       },
@@ -952,7 +952,7 @@
         "hallucination_rate": 1.0
       },
       "performance": {
-        "latency_sec": 0.47,
+        "latency_sec": 0.89,
         "cost_usd": 0.0,
         "total_tokens": 0
       },

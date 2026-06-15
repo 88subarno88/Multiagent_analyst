@@ -1,11 +1,10 @@
 """
 Scraper: fetch a URL and return clean text.
 
-httpx for async fetching, BeautifulSoup for extraction. We strip script/style/
-nav/footer noise and collapse whitespace so the chunker gets readable prose.
-Retries with exponential backoff handle flaky pages and rate limits; failures
-return None so one bad URL never kills a whole research run (graceful
-degradation, Milestone 4).
+httpx for async fetching, BeautifulSoup for extraction. Strips script/style/nav
+noise and collapses whitespace. Failures return None so one bad URL never kills
+a research run (graceful degradation). Browser-like headers reduce bot blocks;
+permanent blocks (401/403) are not retried.
 """
 from __future__ import annotations
 
@@ -17,10 +16,19 @@ from bs4 import BeautifulSoup
 
 _HEADERS = {
     "User-Agent": (
-        "Mozilla/5.0 (compatible; DeepResearchAgent/1.0; +https://example.com/bot)"
-    )
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+    ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Upgrade-Insecure-Requests": "1",
 }
 _NOISE_TAGS = ["script", "style", "nav", "footer", "header", "aside", "noscript", "form"]
+
+# Status codes that mean "blocked / won't work" — don't waste retries on these.
+_NO_RETRY_STATUS = {401, 403, 404, 410, 451}
 
 
 @dataclass
@@ -40,11 +48,21 @@ async def scrape_url(
                 timeout=timeout, follow_redirects=True, headers=_HEADERS
             ) as client:
                 r = await client.get(url)
+                # Permanent blocks: give up immediately, no retries.
+                if r.status_code in _NO_RETRY_STATUS:
+                    print(f"[scrape] blocked ({r.status_code}) {url}")
+                    return None
                 r.raise_for_status()
                 return _extract(url, r.text)
-        except Exception as exc:  # noqa: BLE001 - we want to retry on anything transient
+        except httpx.HTTPStatusError as exc:
+            if exc.response.status_code in _NO_RETRY_STATUS:
+                print(f"[scrape] blocked ({exc.response.status_code}) {url}")
+                return None
             last_exc = exc
-            await asyncio.sleep(0.5 * (2 ** attempt))  # 0.5s, 1s, 2s backoff
+            await asyncio.sleep(0.5 * (2 ** attempt))
+        except Exception as exc:  # transient (timeout, connection reset, etc.)
+            last_exc = exc
+            await asyncio.sleep(0.5 * (2 ** attempt))
     print(f"[scrape] giving up on {url}: {last_exc}")
     return None
 
@@ -55,6 +73,8 @@ def _extract(url: str, html: str) -> ScrapedPage:
         tag.decompose()
     title = (soup.title.string or "").strip() if soup.title else ""
     text = soup.get_text(separator="\n")
+    # Postgres rejects NUL bytes (\x00) in text columns; strip them before storing.
+    text = text.replace("\x00", "")
     # Collapse blank lines / runaway whitespace.
     lines = [ln.strip() for ln in text.splitlines()]
     text = "\n".join(ln for ln in lines if ln)

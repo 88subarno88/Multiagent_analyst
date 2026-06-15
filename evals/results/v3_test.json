@@ -1,0 +1,154 @@
+{
+  "config": {
+    "strategy": "hybrid",
+    "provider": "ollama"
+  },
+  "aggregate": {
+    "mean_citation_accuracy": 0.6,
+    "mean_faithfulness": 0.0,
+    "mean_answer_relevance": 0.42,
+    "mean_hallucination_rate": 1.0,
+    "mean_latency_sec": 91.59,
+    "total_cost_usd": 0.0188
+  },
+  "results": [
+    {
+      "question": "What problem does Retrieval-Augmented Generation solve?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.2,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 121.48,
+        "cost_usd": 0.003922,
+        "total_tokens": 5315
+      },
+      "outputs": {
+        "answer": "### Retrieval-Augmented Generation (RAG): Overview, Benefits & Limitations\n\n#### Introduction\nRetrieval-Augmented Generation (RAG) has emerged as a potent technique in artificial intelligence, combining the strengths of information retrieval systems with generative models to produce more accurate and contextually relevant outputs. This hybrid approach addresses some of the limitations inherent in traditional generative models by incorporating external knowledge from pre-existing corpora. As AI applications continue to grow in complexity and demand, RAG offers a robust solution for enhancing model performance across various domains.\n\n#### What is Retrieval-Augmented Generation?\nRetrieval-augmented generation (RAG) integrates information retrieval with generative models to generate text that is both accurate and contextually relevant. Traditional generative models rely solely on the input provided, often lacking the depth of knowledge needed for detailed responses. RAG addresses this by retrieving external information from a pre-existing corpus, enriching the quality and accuracy of generated outputs.\n\nThe RAG framework typically involves two primary components:\n1. **Retriever**: Searches an external database to find relevant information.\n2. **Generator**: Uses the retrieved context to produce more informed and precise responses.\n\nThis dual approach enhances the model\u2019s ability to handle complex queries, making it a powerful tool for various applications such as customer service, content creation, and more.\n\n#### How Does RAG Make Large Language Models and Generative AI Better?\nRAG significantly improves the capabilities of large language models and generative AI systems by integrating external knowledge into their outputs. This approach allows these AI systems to access vast and diverse databases, improving accuracy and relevance in responses.\n\n1. **Dynamic Learning**: As the knowledge base is updated, RAG can immediately incorporate new information without retraining the entire model.\n2. **Transparency and Explainability**: By explicitly retrieving and using external information, RAG provides clearer explanations for its outputs, enhancing trust and interpretability.\n3. **Efficiency and Scalability**:\n   - **Reduced Model Size**: Offloads some knowledge to external databases, achieving high performance with smaller models.\n   - **Faster Updates**: Updating the knowledge base is quicker than retraining large language models.\n   - **Resource Optimization**: Retrieves only necessary information for each query, optimizing resource usage.\n   - **Scalable Knowledge Expansion**: Virtually unlimited expansion of the knowledge base without increasing model size.\n   - **Improved Inference Speed**: Faster inference times compared to extremely large language models, especially in knowledge-intensive tasks.\n4. **Versatility and Adaptability**:\n   - **Task Flexibility**: Applies to various NLP tasks like question-answering, summarization, content generation, and dialogue systems.\n   - **Language and Domain Adaptability**: Easily adapts to different languages, cultures, and specialized domains by changing the retrieval corpus.\n   - **Personalization**: Incorporates user-specific or organization-specific knowledge bases for highly personalized interactions.\n   - **Hybrid Approaches**: Combines with AI techniques like reinforcement learning or few-shot learning.\n\n#### Benefits of RAG\n1. **Enhanced Ethical and Legal Compliance**:\n   - **Source Attribution**: Provides easier source attributions, addressing copyright and intellectual property concerns.\n   - **Bias Mitigation**: Reduces biases by accessing diverse sources.\n   - **Content Moderation**: Constrains retrieval to approved sources for appropriate content generation.\n   - **Auditability**: Offers an additional layer of transparency, making auditing and verification easier.\n\n#### Limitations of RAG\nWhile RAG offers numerous benefits, it also has some limitations:\n1. **Complexity in Implementation**: Requires careful design and integration of the retriever and generator components.\n2. **Dependency on External Data Quality**: The quality of external data can significantly impact model performance.\n3. **Scalability Challenges**: Managing large-scale retrieval systems can be complex.\n\n#### Future Expectations\nAs AI applications continue to evolve, RAG is expected to play a crucial role in enhancing the accuracy and relevance of generated outputs across various domains. Its ability to dynamically incorporate new information and adapt to diverse contexts makes it an attractive solution for organizations looking to improve their AI systems.\n\n#### Conclusion\nRetrieval-Augmented Generation (RAG) represents a significant innovation in artificial intelligence, offering enhanced capabilities through the integration of information retrieval with generative models. By addressing the limitations of traditional approaches, RAG provides more accurate and contextually relevant outputs, making it a valuable tool for various applications. As AI continues to grow, RAG is poised to play an increasingly important role in shaping the future of intelligent systems.\n\n---\n\nThis report provides a comprehensive overview of Retrieval-Augmented Generation (RAG), highlighting its benefits, limitations, and potential impact on the field of artificial intelligence.",
+        "unsupported_claims": [],
+        "sources_cited": [
+          "https://www.ibm.com/think/insights/navigating-generative-ai-challenges",
+          "https://www.glean.com/blog/rag-examples",
+          "https://buzzclan.com/data-engineering/retrieval-augmented-generation",
+          "https://www.merge.dev/blog/rag-benefits",
+          "https://www.singlestore.com/blog/a-guide-to-retrieval-augmented-generation-rag",
+          "https://www.kiteworks.com/risk-compliance-glossary/retrieval-augmented-generation"
+        ]
+      }
+    },
+    {
+      "question": "Bi-encoder vs cross-encoder in retrieval \u2014 what's the difference?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.8,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 59.15,
+        "cost_usd": 0.003931,
+        "total_tokens": 5323
+      },
+      "outputs": {
+        "answer": "### Report: Understanding Bi-Encoders and Cross-Encoders in Natural Language Processing\n\n#### Introduction\nIn recent years, advancements in natural language processing (NLP) have led to a proliferation of models that can handle complex tasks such as semantic search, retrieval, ranking, and question answering. Two prominent model architectures in this domain are bi-encoders and cross-encoders. This report aims to provide an in-depth understanding of these two approaches, their differences, strengths, limitations, and appropriate use cases.\n\n#### 1. The Core Idea\n\n**Bi-Encoders:**\n- **Definition:** Bi-encoders process each input (query or document) separately and then compare the resulting embeddings.\n- **Process:** Each query and document is encoded independently into dense embedding vectors using a shared transformer model, followed by similarity calculation.\n- **Example:** BERT, DistilBERT.\n\n**Cross-Encoders:**\n- **Definition:** Cross-encoders process both inputs (query and document) together in one pass through the transformer network.\n- **Process:** Both query and document are concatenated into a single input sequence, which is then processed by the transformer to produce a direct relevance score.\n- **Example:** Cross-Encoder models like those used for sentence pair classification.\n\n#### 2. Architecture Breakdown\n\n**Bi-Encoders:**\n- **Input Processing:** Each input (query or document) goes through the same transformer model independently.\n- **Output:** Dense embedding vectors are produced, which are then compared using a similarity metric such as cosine similarity.\n- **Efficiency:** Very fast because documents can be pre-encoded and stored in vector databases. This allows for efficient querying.\n\n**Cross-Encoders:**\n- **Input Processing:** Query and document are concatenated into one input sequence before being processed by the transformer model.\n- **Output:** A single relevance score is produced directly, indicating how similar or relevant the query and document are.\n- **Computational Cost:** High computational cost because every comparison requires re-running the model.\n\n#### 3. Efficiency vs. Accuracy\n\n**Bi-Encoders:**\n- **Speed:** Very fast due to pre-computed embeddings for documents.\n- **Scalability:** Excellent, supporting millions of documents in vector databases like FAISS, Weaviate, or ElasticSearch.\n- **Accuracy:** Good but may miss subtle interactions between query and document.\n\n**Cross-Encoders:**\n- **Speed:** Slow because every comparison requires re-running the model.\n- **Scalability:** Poor due to high computational cost for large-scale comparisons.\n- **Accuracy:** High, especially for fine-grained ranking tasks where direct relevance scores are needed.\n\n#### 4. Use Cases\n\n**Bi-Encoders:**\n- **Retrieval:** Ideal for information retrieval systems where documents need to be pre-encoded and stored in a vector database.\n- **RAG (Reinforced Active Generation):** Suitable for scenarios requiring large-scale document retrieval followed by ranking or generation tasks.\n\n**Cross-Encoders:**\n- **Reranking:** Best suited for tasks that require fine-grained ranking, such as question answering systems where the initial retrieval is followed by a more precise ranking.\n- **Pairwise Scoring:** Useful in applications like sentence pair classification and similarity scoring.\n\n#### 5. Practical Considerations\n\n**Bi-Encoders:**\n- **Advantages:** Efficient for large-scale deployments due to pre-computed embeddings, scalable with vector databases.\n- **Disadvantages:** May not capture subtle interactions between query and document pairs.\n\n**Cross-Encoders:**\n- **Advantages:** High accuracy in fine-grained ranking tasks, direct relevance scores.\n- **Disadvantages:** High computational cost for large-scale comparisons, less suitable for pre-computed embeddings.\n\n#### 6. Conclusion\n\nBi-encoders and cross-encoders offer distinct advantages depending on the specific requirements of the NLP task at hand. Bi-encoders are ideal for scenarios where efficiency and scalability are critical, while cross-encoders excel in tasks requiring high accuracy in fine-grained ranking or pairwise scoring.\n\n#### 7. References\n\n1. [Beyond Simple Embeddings: A Deep Dive into Bi-Encoders and Cross-Encoders | WaterCrawl Blog](https://www.watercrawls.com/blog/bi-encoders-cross-encoders/)\n2. [Cross-Encoders \u2014 Sentence Transformers Documentation](https://www.sentence-transformers.com/docs/)\n\n---\n\nThis report provides a comprehensive overview of bi-encoders and cross-encoders, their architectures, efficiency, accuracy, and appropriate use cases in NLP tasks.",
+        "unsupported_claims": [],
+        "sources_cited": [
+          "https://milvus.io/ai-quick-reference/what-are-biencoders-and-crossencoders-and-when-should-i-use-each",
+          "https://arxiv.org/html/2502.14822v3",
+          "https://osanseviero.github.io/hackerllama/blog/posts/sentence_embeddings2",
+          "https://www.shadecoder.com/topics/cross-encoder-architecture-a-comprehensive-guide-for-2025",
+          "https://watercrawl.dev/blog/Beyond-Simple-Embeddings",
+          "https://www.amazon.science/blog/improving-unsupervised-sentence-pair-comparison",
+          "https://www.sbert.net/examples/cross_encoder/applications/README.html"
+        ]
+      }
+    },
+    {
+      "question": "Why is overlap important when chunking documents for RAG?",
+      "metrics": {
+        "citation_accuracy": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.8,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 152.7,
+        "cost_usd": 0.003378,
+        "total_tokens": 5099
+      },
+      "outputs": {
+        "answer": "### Document Chunking: Optimizing RAG Retrieval Pipelines\n\n#### Introduction\nIn recent years, Research-As-You-Go (RAG) systems have gained significant traction in various applications due to their ability to integrate real-time information with existing knowledge bases. However, the effectiveness of these systems heavily depends on how well they handle document chunking and retrieval. This report delves into the nuances of document chunking, particularly focusing on the impact of overlap between chunks on RAG retrieval pipelines.\n\n#### The Role of Overlap in Document Chunking\nWhen dealing with large documents, it is common to break them down into smaller, manageable chunks for efficient processing. However, simply dividing a document into non-overlapping segments can lead to significant gaps at the boundaries, potentially missing critical context that spans these boundaries. To address this issue, overlap between chunks is introduced.\n\n#### Calculating the Number of Chunks\nThe number of chunks \\( K \\) generated from a document of length \\( N \\) with chunk size \\( n \\) and overlap \\( o \\) can be calculated as follows:\n- **Zero Overlap**: \n  \\[\n  K = \\left\\lceil \\frac{N}{n} \\right\\rceil\n  \\]\n- **Overlap Equal to Half the Chunk Size**:\n  \\[\n  K \\approx 2 \\times \\left\\lceil \\frac{N}{n} \\right\\rceil\n  \\]\n\nThis doubling effect highlights the trade-off between boundary coverage and redundancy. More overlap means better coverage but also increases storage and embedding compute requirements.\n\n#### Visualization of Chunk Overlap Mechanism\nTo illustrate, consider a document divided into three chunks with an overlap equal to half the chunk size:\n- **Chunk 1 (Blue)**: Covers positions 0 to \\( n \\)\n- **Chunk 2 (Orange)**: Covers positions \\( n/2 \\) to \\( 3n/2 \\)\n- **Chunk 3 (Green)**: Covers positions \\( n \\) to \\( 2n \\)\n\nThe red shaded regions highlight duplicated text at the boundaries, ensuring that information near split points is fully captured in at least one chunk's embedding.\n\n#### Trade-offs of Overlap\n1. **Boundary Coverage**: More overlap ensures better coverage of boundary-spanning passages.\n2. **Redundancy and Storage**: Increased overlap leads to more chunks and storage requirements, as well as redundant embeddings.\n3. **Context Loss**: Less overlap risks losing context at boundaries, making relevant information invisible to retrieval.\n\n#### Empirical Guidelines for Overlap\nA common rule of thumb is to set the overlap to 10-20% of the chunk size:\n- For a 500-token chunk, an overlap of 50-100 tokens usually provides sufficient boundary coverage without excessive duplication.\n  \nThis range strikes a pragmatic balance between ensuring most boundary-spanning passages are captured and avoiding bloated indices.\n\n#### Practical Considerations\nIn practice, if retrieval frequently returns two highly similar chunks from adjacent positions in the same document, you may be using too much overlap. Conversely, if relevant answers are being missed because critical context lands on the wrong side of a boundary, you may need more overlap.\n\n#### Conclusion\nThe optimal amount of overlap depends on empirical testing and specific application requirements. A balance between boundary coverage and redundancy is crucial for effective RAG retrieval pipelines. By carefully tuning the overlap, organizations can enhance the performance and reliability of their document chunking systems.\n\n---\n\nThis report provides a comprehensive overview of how to optimize document chunking in RAG retrieval pipelines by considering the trade-offs associated with different levels of overlap.",
+        "unsupported_claims": [],
+        "sources_cited": [
+          "https://www.linkedin.com/posts/pavan-belagatti_the-8-step-document-chunking-workflow-for-activity-7309983412134547456-O4du",
+          "https://snorkel.ai/blog/retrieval-augmented-generation-rag-failure-modes-and-how-to-fix-them",
+          "https://www.linkedin.com/posts/pavan-belagatti_8-step-document-chunking-workflow-for-your-activity-7321950218508214272-I2v-",
+          "https://docs.unstract.com/unstract/unstract_platform/user_guides/chunking",
+          "https://unstructured.io/blog/chunking-for-rag-best-practices",
+          "https://community.openai.com/t/issues-with-data-chunk-overlapping-during-chunking-retrieval-accuracy-problems/1042029",
+          "https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-chunk-documents",
+          "https://montecarlo.ai/blog-rag-vs-fine-tuning",
+          "https://mbrenndoerfer.com/writing/document-chunking-rag-strategies-retrieval",
+          "https://ubiai.tools/how-to-train-domain-specific-llm-best-practices-guide"
+        ]
+      }
+    },
+    {
+      "question": "What is Reciprocal Rank Fusion (RRF)?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.2,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 46.83,
+        "cost_usd": 0.004005,
+        "total_tokens": 5349
+      },
+      "outputs": {
+        "answer": "### Reciprocal Rank Fusion (RRF): How It Works and When to Use It\n\n**May 18th, 2026**\n14 min read\nCopy URL\n\n---\n\n#### Introduction\n\nReciprocal Rank Fusion (RRF) is a rank aggregation algorithm that merges results from multiple retrievers\u2014typically a keyword-based BM25 ranker and a vector-based dense embedding ranker\u2014by summing the reciprocals of each document's rank in each result list. This method was introduced by Cormack, Clarke, and B\u00fcttcher in their 2009 SIGIR paper, \"Reciprocal Rank Fusion outperforms Condorcet and Individual Rank Learning Methods.\" RRF has become a standard approach for hybrid search because it operates on rank positions rather than raw scores, addressing the comparability issue between different ranking systems.\n\n#### How Reciprocal Rank Fusion Works\n\nThe core formula for RRF is straightforward:\n\n\\[ \\text{RRF\\_score}(d) = \\sum_r \\frac{1}{k + \\text{rank}_r(d)} \\]\n\nwhere:\n- \\( d \\) represents a document.\n- \\( r \\) indexes the different rankers (e.g., BM25 and vector).\n- \\( k \\) is a smoothing factor, typically set to 60.\n\nThe formula works by converting each rank into an inverse score. Documents that rank higher in both systems receive higher scores, while documents that rank highly in only one system still lose out to those with lower ranks but consistent performance across multiple systems.\n\n#### Why \\( k = 60 \\)?\n\nThe choice of \\( k = 60 \\) is based on empirical evidence and theoretical considerations. A value of 60 ensures that the inverse rank score remains meaningful even when a document has a very low rank (e.g., rank 1). This smoothing factor helps balance the influence of highly ranked documents while still giving some weight to lower-ranked ones.\n\n#### Comparison with Score Normalization Methods\n\nScore normalization methods, such as linear scaling or logarithmic transformation, attempt to align different score scales. However, these approaches can introduce biases and may not always accurately reflect the relative importance of documents. RRF avoids this by focusing solely on rank positions, ensuring that each document's position in the ranking is given equal weight.\n\n#### Implementation in SQL\n\nTo implement RRF in SQL, you can use Common Table Expressions (CTEs), window functions like `ROW_NUMBER()`, and general expressions to calculate the final hybrid score. Here\u2019s an example of how this might look:\n\n```sql\nWITH BM25_Ranks AS (\n    SELECT doc_id, ROW_NUMBER() OVER (ORDER BY bm25_score DESC) as rank\n    FROM bm25_results\n),\nVector_Ranks AS (\n    SELECT doc_id, ROW_NUMBER() OVER (ORDER BY vector_similarity DESC) as rank\n    FROM vector_results\n)\nSELECT \n    doc_id,\n    SUM(1 / (60 + BM25_Ranks.rank)) + SUM(1 / (60 + Vector_Ranks.rank)) as RRF_score\nFROM \n    BM25_Ranks\nFULL OUTER JOIN \n    Vector_Ranks ON BM25_Ranks.doc_id = Vector_Ranks.doc_id\nGROUP BY \n    doc_id;\n```\n\nThis SQL query first ranks documents using both the BM25 and vector similarity scores, then sums their inverse ranks to produce the final RRF score.\n\n#### Benefits of Hybrid Search in SQL\n\n1. **Consistency**: By focusing on rank positions, RRF ensures that the hybrid search results are consistent across different ranking systems.\n2. **Scalability**: Implementing RRF in SQL allows for efficient and scalable processing of large datasets.\n3. **Flexibility**: The ability to integrate various ranking methods makes it easier to adapt to changing requirements.\n\n#### Handling Vector and Full-Text Searches\n\nIn SingleStore, vector and full-text searches are handled by leveraging the database's capabilities for both types of queries. The `FULL OUTER JOIN` in the SQL query ensures that all documents from both rankers are considered, even if they don't appear in one or the other.\n\n#### Common Use Cases\n\nHybrid search with RRF is particularly useful in scenarios where:\n- Multiple ranking methods need to be combined.\n- Raw scores from different systems cannot be directly compared.\n- Consistency and fairness in document rankings are crucial.\n\nBy using RRF, you can build more robust and reliable hybrid search systems that leverage the strengths of both keyword-based and vector-based approaches.\n\n---\n\nThis guide provides a comprehensive overview of Reciprocal Rank Fusion (RRF) and its implementation in SQL. Whether you're building a search engine or integrating multiple ranking methods, understanding RRF can help you create more effective and fair hybrid search solutions.",
+        "unsupported_claims": [],
+        "sources_cited": [
+          "https://www.ai21.com/glossary/tech/what-is-reciprocal-rank-fusion-rrf",
+          "https://bigdataboutique.com/blog/reciprocal-rank-fusion-how-it-works-and-when-to-use-it",
+          "https://mbrenndoerfer.com/writing/hybrid-search-bm25-dense-retrieval-fusion",
+          "https://www.emergentmind.com/topics/reciprocal-rank-fusion-rrf",
+          "https://dev.to/master-rj/understanding-reciprocal-rank-fusion-rrf-in-retrieval-augmented-systems-52kc",
+          "https://www.linkedin.com/posts/pavan-belagatti_8-step-document-chunking-workflow-for-your-activity-7321950218508214272-I2v-",
+          "https://www.singlestore.com/blog/hybrid-search-using-reciprocal-rank-fusion-in-sql"
+        ]
+      }
+    },
+    {
+      "question": "How does BM25 differ from dense vector retrieval?",
+      "metrics": {
+        "citation_accuracy": 1.0,
+        "faithfulness": 0.0,
+        "answer_relevance": 0.1,
+        "hallucination_rate": 1.0
+      },
+      "performance": {
+        "latency_sec": 77.78,
+        "cost_usd": 0.003585,
+        "total_tokens": 5181
+      },
+      "outputs": {
+        "answer": "### Integrate Sparse and Dense Vectors to Enhance Knowledge Retrieval in RAG Using Amazon OpenSearch Service\n\n#### Introduction\nIn recent years, there has been significant progress in knowledge retrieval systems, particularly with the advent of dense vector models that leverage deep learning techniques for semantic embeddings. However, these models often face challenges such as high computational costs and potential semantic uncertainty, especially when dealing with short or ambiguous queries. Sparse vector models, on the other hand, offer a more interpretable approach by leveraging term expansion and traditional information retrieval techniques.\n\nThis report explores how integrating sparse and dense vectors can enhance knowledge retrieval in Retrieval-Augmented Generation (RAG) systems using Amazon OpenSearch Service. Specifically, we will discuss the benefits of combining these two approaches and provide a practical example of deploying such a hybrid system.\n\n#### Benefits of Combining Sparse and Dense Vectors\n\n1. **Improved Reliability**: Sparse vector retrieval first expands terms, significantly increasing the number of hit terms compared to traditional BM25 scoring. This helps produce more reliable scores.\n   \n2. **Complementary Performance**: Although sparse vector models may not outperform state-of-the-art dense vector models in absolute metrics, they offer unique advantages. For instance, evaluations on some datasets (e.g., DBPedia) reveal that the NDCG@10 metric can be better with hybrid search.\n\n3. **Interpretability**: Sparse vector retrieval maintains interpretability, allowing users to understand and debug the scoring calculations through explanation commands.\n   \n4. **Handling Short Queries**: For extremely short user inputs, dense vector models might have significant semantic uncertainty. Overlaying a sparse vector model can provide more robust results.\n\n#### Practical Example: Deploying Cohere-Embed-Multilingual-v3.0\n\nTo demonstrate how to integrate these two approaches in Amazon OpenSearch Service, we will use the Cohere-embed-multilingual-v3.0 dense vector model and deploy it using Amazon Bedrock.\n\n1. **Deploy a Dense Vector Model**\n   - We selected the Cohere-embed-multilingual-v3.0 model as one of several popular models used in production for dense vectors.\n   - Access this model through Amazon Bedrock by creating a connector for bedrock-cohere and registering it as a model in OpenSearch.\n\n2. **Registering the Model**\n   ```python\n   # Example Python code to create a connector and register the model\n\n   import boto3\n\n   def create_bedrock_connector():\n       client = boto3.client('bedrock')\n       response = client.create_model(\n           name='bedrock-cohere',\n           providerModelName='cohere-embed-multilingual-v3.0'\n       )\n       return response['modelId']\n\n   model_id = create_bedrock_connector()\n   print(f\"Model ID: {model_id}\")\n\n   # Register the model in OpenSearch\n   opensearch_client = boto3.client('opensearch')\n   response = opensearch_client.register_analysis_framework(\n       analysisFrameworkName='bedrock-cohere',\n       analysisFrameworkDescription='Cohere-embed-multilingual-v3.0 model for dense vector embeddings.',\n       analysisFrameworkVersion='1.0',\n       analysisFrameworkDefinition={\n           'modelId': model_id\n       }\n   )\n   print(f\"Analysis Framework Registered: {response}\")\n   ```\n\n#### Conclusion\n\nIntegrating sparse and dense vectors in knowledge retrieval systems can significantly enhance performance, especially for short or ambiguous queries. By leveraging the strengths of both approaches, we can build more robust and interpretable RAG systems using Amazon OpenSearch Service.\n\nThis hybrid approach not only improves reliability but also maintains interpretability, making it a valuable solution for various applications where semantic accuracy is crucial.",
+        "unsupported_claims": [],
+        "sources_cited": [
+          "https://en.wikipedia.org/wiki/Okapi_BM25",
+          "https://bigdataboutique.com/blog/reciprocal-rank-fusion-how-it-works-and-when-to-use-it",
+          "https://searchatlas.com/blog/dense-vs-sparse-retrieval",
+          "https://mbrenndoerfer.com/writing/reranking-cross-encoders-information-retrieval",
+          "https://mbrenndoerfer.com/writing/hybrid-search-bm25-dense-retrieval-fusion",
+          "https://learn.microsoft.com/en-us/azure/search/index-similarity-and-scoring",
+          "https://www.geeksforgeeks.org/nlp/what-is-bm25-best-matching-25-algorithm",
+          "https://aws.amazon.com/blogs/big-data/integrate-sparse-and-dense-vectors-to-enhance-knowledge-retrieval-in-rag-using-amazon-opensearch-service"
+        ]
+      }
+    }
+  ]
+}

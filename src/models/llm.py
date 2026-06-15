@@ -1,14 +1,14 @@
 """
 Provider-agnostic LLM client.
 
-Uses raw httpx against each provider's REST API rather than a heavy SDK, so the
-dependency surface stays small and the request shape is visible (good for
-interviews: you can explain exactly what a 'tool call' or 'json mode' is on the
-wire). Returns a uniform LLMResponse with token counts so the cost tracker works
-the same regardless of provider.
+Raw httpx against each provider's REST API. Gemini rotates across multiple API
+keys on 429 and backs off when all are limited. Ollama runs a local model.
+Returns a uniform LLMResponse with token counts.
 """
 from __future__ import annotations
 
+import asyncio
+import itertools
 import json
 from dataclasses import dataclass
 
@@ -26,6 +26,30 @@ class LLMResponse:
     provider: str = ""
 
 
+_key_cycle = itertools.cycle(settings.gemini_key_list) if settings.gemini_key_list else None
+
+
+async def _gemini_post(url: str, body: dict, timeout: float, max_rounds: int = 5) -> dict:
+    """POST to Gemini, rotating keys on 429 and backing off when all are limited."""
+    keys = settings.gemini_key_list
+    if not keys:
+        raise RuntimeError("No Gemini API keys configured (set GEMINI_API_KEY or GEMINI_API_KEYS).")
+
+    async with httpx.AsyncClient(timeout=timeout) as client:
+        for round_ in range(max_rounds):
+            for _ in range(len(keys)):
+                key = next(_key_cycle)
+                r = await client.post(url, headers={"x-goog-api-key": key}, json=body)
+                if r.status_code == 429:
+                    continue
+                r.raise_for_status()
+                return r.json()
+            await asyncio.sleep(2 ** round_)
+        r = await client.post(url, headers={"x-goog-api-key": next(_key_cycle)}, json=body)
+        r.raise_for_status()
+        return r.json()
+
+
 class LLMClient:
     def __init__(self, provider: str | None = None):
         self.provider = provider or settings.primary_provider
@@ -36,7 +60,7 @@ class LLMClient:
         system: str | None = None,
         json_mode: bool = False,
         temperature: float = 0.2,
-        timeout: float = 90.0,
+        timeout: float = 600.0,
     ) -> LLMResponse:
         if self.provider == "gemini":
             return await self._gemini(prompt, system, json_mode, temperature, timeout)
@@ -45,10 +69,9 @@ class LLMClient:
         raise ValueError(f"Unknown provider: {self.provider}")
 
     async def generate_json(self, prompt: str, system: str | None = None, **kw) -> dict:
-        """Convenience wrapper that parses JSON-mode output defensively."""
+        """Call generate in JSON mode and parse defensively."""
         resp = await self.generate(prompt, system=system, json_mode=True, **kw)
         text = resp.text.strip()
-        # Strip accidental markdown fences if the model adds them.
         if text.startswith("```"):
             text = text.split("```", 2)[1]
             if text.startswith("json"):
@@ -56,7 +79,6 @@ class LLMClient:
         try:
             return json.loads(text)
         except json.JSONDecodeError:
-            # Last-ditch: grab the outermost {...} or [...].
             for open_c, close_c in (("{", "}"), ("[", "]")):
                 i, j = text.find(open_c), text.rfind(close_c)
                 if i != -1 and j != -1:
@@ -66,10 +88,7 @@ class LLMClient:
                         continue
             raise
 
-    # ---- Gemini ----
     async def _gemini(self, prompt, system, json_mode, temperature, timeout) -> LLMResponse:
-        if not settings.gemini_api_key:
-            raise RuntimeError("GEMINI_API_KEY is not set (see .env.example).")
         url = (
             "https://generativelanguage.googleapis.com/v1beta/models/"
             f"{settings.gemini_model}:generateContent"
@@ -83,14 +102,7 @@ class LLMClient:
         if json_mode:
             body["generationConfig"]["responseMimeType"] = "application/json"
 
-        async with httpx.AsyncClient(timeout=timeout) as client:
-            r = await client.post(
-                url,
-                headers={"x-goog-api-key": settings.gemini_api_key},
-                json=body,
-            )
-            r.raise_for_status()
-            data = r.json()
+        data = await _gemini_post(url, body, timeout)
 
         try:
             text = data["candidates"][0]["content"]["parts"][0]["text"]
@@ -105,7 +117,6 @@ class LLMClient:
             provider="gemini",
         )
 
-    # ---- Ollama (local open-weight) ----
     async def _ollama(self, prompt, system, json_mode, temperature, timeout) -> LLMResponse:
         messages = []
         if system:
@@ -119,6 +130,7 @@ class LLMClient:
         }
         if json_mode:
             body["format"] = "json"
+            messages[-1]["content"] += "\n\nRespond with valid JSON only."
 
         async with httpx.AsyncClient(timeout=timeout) as client:
             r = await client.post(f"{settings.ollama_base_url}/api/chat", json=body)
