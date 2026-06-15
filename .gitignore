@@ -11,4 +11,6 @@ __pycache__/
 
 # VS Code settings (optional, but good practice)
 .vscode/
-.cph/
+.cph/.env
+.env.bak
+*.bak
