@@ -51,6 +51,9 @@ def citation_accuracy(report_sources: list[str], must_cite: list[str]) -> float:
 async def faithfulness(answer: str, context: str, judge: LLMClient) -> tuple[float, list[str]]:
     if not answer or not context:
         return (0.0, [])
+    # Cap context so the prompt fits the judge's context window.
+    context = context[:6000]
+    answer = answer[:3000]
     prompt = f"Context: {context}\n\nAnswer: {answer}"
     try:
         # generate_json already returns a parsed dict.

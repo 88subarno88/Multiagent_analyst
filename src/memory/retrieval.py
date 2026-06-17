@@ -6,7 +6,7 @@ Three levels you can toggle to produce the v2/v3/v4 results:
   - hybrid:      dense + keyword fused with Reciprocal Rank Fusion (RRF)
   - rerank:      hybrid over-fetch, then a cross-encoder reranks the shortlist
 
-Why each matters (interview gold):
+Why each matters:
   - Dense (bi-encoder) embeds query and chunk separately -> fast, catches
     paraphrase/meaning, but misses exact IDs, rare names, code tokens.
   - Sparse keyword (BM25-ish) nails those exact terms but misses synonyms.

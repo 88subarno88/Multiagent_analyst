@@ -41,7 +41,7 @@ async def run_eval(strategy: str, provider: str, out_name: str):
     _RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
     dataset = _load_dataset()
-    dataset = dataset[:5]   # TEMP: test slice — uncomment to run only 5 questions
+    # dataset = dataset[:5]   # TEMP: test slice — uncomment to run only 5 questions
     print(f"Loaded {len(dataset)} questions from dataset.")
 
     orch = Orchestrator(provider=provider, retrieval_strategy=strategy)
