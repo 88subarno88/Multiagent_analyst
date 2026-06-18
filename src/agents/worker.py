@@ -1,15 +1,13 @@
 """
 Worker agent: research ONE sub-question.
 
-Flow (this is the corrective-RAG loop, Milestone 3):
-  1. Check memory first. Embed the sub-question, retrieve from the store.
-     If we already have strong matches, we may skip the web entirely -> the key
-     efficiency win over the old "always re-scrape" version.
-  2. If memory is thin, search (Tavily) -> scrape -> chunk -> embed -> WRITE BACK
-     to memory (so the next query benefits), then retrieve fresh.
-  3. Grade the retrieved context with a lightweight LLM call. If it's not good
-     enough, rewrite the query and retry (bounded by max_corrective_retries).
-  4. Return the top context chunks + their sources for the synthesizer.
+Flow (corrective-RAG loop, Milestone 3):
+  1. Memory-first: retrieve from the store; if strong matches exist, skip the web.
+  2. Else fetch -> chunk -> embed -> write back to memory, then retrieve.
+     Fetch prefers Tavily's server-side content (raw_content), adds Wikipedia +
+     arXiv as reliable sources, and only scrapes URLs Tavily didn't extract.
+  3. Grade the context; if weak, rewrite the query and retry (bounded).
+  4. Return top chunks + sources for the synthesizer.
 """
 from __future__ import annotations
 
@@ -23,8 +21,8 @@ from src.memory.store import MemoryStore, Retrieved
 from src.models.embeddings import EmbeddingClient
 from src.models.llm import LLMClient
 from src.observability import CostTracker, trace
-from src.tools.scrape import scrape_many
-from src.tools.search import tavily_search
+from src.tools.scrape import scrape_url
+from src.tools.search import tavily_search, wikipedia_search, arxiv_search
 
 _GRADER_PROMPT = (Path(__file__).parent / "prompts" / "worker_grader.txt").read_text()
 
@@ -90,21 +88,58 @@ class Worker:
         return result
 
     async def _fetch_and_store(self, query: str):
+        """Gather page texts, preferring sources that don't need scraping."""
         self.cost.record_tool("tavily_search")
-        results = await tavily_search(query, max_results=5)
-        urls = [r.url for r in results if r.url]
-        self.cost.record_tool("scrape_many")
-        pages = await scrape_many(urls)
+        results = await tavily_search(query, max_results=5, include_raw=True)
 
-        for page in pages:
-            if not page.text.strip():
+        docs: list[tuple[str, str, str]] = []          # (url, title, text)
+        to_scrape: list[tuple[str, str]] = []          # (url, title) needing a scrape
+
+        for r in results:
+            if not r.url:
                 continue
-            chunks = chunk_text(page.text, metadata={"url": page.url, "title": page.title})
+            if r.raw_content and r.raw_content.strip():
+                docs.append((r.url, r.title, r.raw_content))   # Tavily already has it
+            else:
+                to_scrape.append((r.url, r.title))             # fall back to scraping
+
+        # Scrape only the ones Tavily didn't return content for.
+        if to_scrape:
+            self.cost.record_tool("scrape")
+            for url, title in to_scrape:
+                page = await scrape_url(url)
+                if page and page.text.strip():
+                    docs.append((page.url, page.title or title, page.text))
+
+        # Wikipedia: reliable, never blocked.
+        try:
+            self.cost.record_tool("wikipedia")
+            wiki = await wikipedia_search(query)
+            if wiki and wiki.raw_content:
+                docs.append((wiki.url, wiki.title, wiki.raw_content))
+        except Exception:  # noqa: BLE001 - bonus source; never block on it
+            pass
+
+        # arXiv: primary sources for ML/retrieval topics.
+        try:
+            self.cost.record_tool("arxiv")
+            for paper in await arxiv_search(query, max_results=2):
+                if paper.raw_content:
+                    docs.append((paper.url, paper.title, paper.raw_content))
+        except Exception:  # noqa: BLE001 - bonus source; never block on it
+            pass
+
+        # Chunk + embed + write everything back to memory.
+        for url, title, text in docs:
+            text = text.replace("\x00", "")[:5000]
+            if not text.strip():
+                continue
+            chunks = chunk_text(text, metadata={"url": url, "title": title})
             if not chunks:
                 continue
             embeddings = await self.embedder.embed_async([c.content for c in chunks])
             await self.store.upsert_document(
-                url=page.url, title=page.title, content=page.text,
+                url=url, title=title, content=text,
                 chunks=chunks, embeddings=embeddings,
             )
 
@@ -115,8 +150,6 @@ class Worker:
         prompt = f"Sub-question: {sub_question}\n\nRetrieved context:\n{context}"
         try:
             data = await self.llm.generate_json(prompt, system=_GRADER_PROMPT)
-            # generate_json doesn't return the response object, so approximate
-            # cost with a tiny fixed accounting call instead:
             self.cost.llm_calls += 1
             return data
         except Exception:  # noqa: BLE001
