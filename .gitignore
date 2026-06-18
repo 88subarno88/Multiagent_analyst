@@ -14,3 +14,7 @@ __pycache__/
 .cph/.env
 .env.bak
 *.bak
+.env
+.env.bak
+*.bak
+.env.*
