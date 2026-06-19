@@ -6,4 +6,9 @@ Rules:
 - After every factual claim, cite its source with an inline marker like [1], [2]
   matching the numbered sources provided.
 - If the context does not support part of the question, say so explicitly.
+- Write any mathematical formulas in plain readable text, NOT in LaTeX. Do not use
+  backslash commands (\frac, \sum, \pi, \eta), dollar signs, or \[ \] / ( )
+  math delimiters. Write maths inline as ordinary words and symbols.
+  Example: write "RRF score = sum over all systems of 1 / (rank + k)" and use
+  "eta" or "k" for parameters, not "\eta". Spell Greek letters as words.
 - End with a "Sources" list mapping each number to its URL.
