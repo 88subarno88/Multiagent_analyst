@@ -65,31 +65,52 @@ relevance, the lowest hallucination, and was actually the fastest of the three.
 
 The system is built in four parts. Think of them as four jobs.
 
-```
-                 ┌──────────────────────────────────────────────┐
- your question → │              ORCHESTRATION PLANE              │
-                 │                                                │
-                 │   PLANNER ── breaks the question into ──┐      │
-                 │                sub-questions            ▼      │
-                 │                              ┌────────────────┐ │
-                 │   SYNTHESIZER ◄───────────── │ WORKER agents  │ │
-                 │   (writes the cited report)  │ run in parallel│ │
-                 │                              └───┬────────┬───┘ │
-                 └──────────────────────────────────┼────────┼─────┘
-                                                     ▼        ▼
-                  ┌───────────────────┐   ┌────────────────────────┐
-                  │   MEMORY PLANE    │   │     TOOLING PLANE       │
-                  │  chunk → embed →  │◄──│  Tavily / Wikipedia /   │
-                  │  pgvector store → │   │  arXiv / scrape + Jina  │
-                  │  semantic search  │   └────────────────────────┘
-                  └───────────────────┘
-                            ▲
-                            │  everything above runs INSIDE the harness below
-        ┌───────────────────┴───────────────────────────────────────┐
-        │  EVALUATION PLANE: test set → run pipeline → score          │
-        │  (faithfulness, relevance, citation accuracy, hallucination,│
-        │   latency) → results/*.json                                 │
-        └─────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    Q(["User question"]) --> P
+
+    subgraph ORCH["Orchestration plane"]
+        direction TB
+        P["Planner<br/>splits question into sub-questions"]
+        W["Worker agents<br/>run in parallel"]
+        S["Synthesizer<br/>writes the cited report"]
+        P --> W
+        W --> S
+    end
+
+    subgraph MEM["Memory plane (RAG)"]
+        direction TB
+        M1["chunk and embed"]
+        M2[("pgvector store")]
+        M3["semantic search"]
+        M1 --> M2 --> M3
+    end
+
+    subgraph TOOL["Tooling plane"]
+        direction TB
+        T1["Tavily search"]
+        T2["Wikipedia / arXiv"]
+        T3["Scraper + Jina fallback"]
+    end
+
+    W -->|"check memory first"| M3
+    W -->|"fetch what is missing"| T1
+    W --> T2
+    W --> T3
+    T1 -->|"write back"| M1
+    T2 --> M1
+    T3 --> M1
+
+    S --> R(["Cited report"])
+
+    subgraph EVAL["Evaluation plane (the harness)"]
+        E["Test set then run the whole pipeline then score:<br/>faithfulness, relevance, citation, hallucination, latency<br/>then write results/*.json"]
+    end
+
+    R --> E
+
+    classDef plane fill:#eef2ff,stroke:#2563eb,stroke-width:1px;
+    class ORCH,MEM,TOOL,EVAL plane
 ```
 
 **1. Orchestration plane — who does what.**
